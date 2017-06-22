@@ -21,7 +21,11 @@ body {
         padding-top: 100px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
     }
 
-    .navbar-fixed-top .navbar-brand {
+    .navbar-fixed-top {
+        padding: 15px 0;
+    }
+
+    .navbar-brand {
         padding: 15px 0;
     }
 }
@@ -54,60 +58,63 @@ option {
 }
 
 /*
-Gradient header 
+Gradient header
 */
 nav#header {
-    background: linear-gradient(90deg, #1f3d7a, #4d94ff);
+    background: linear-gradient(90deg,
+      /*#1f3d7a, #4d94ff*/
+      #046018, #23d34a
+      );
 }
 
 /*
 Voilet color button
 */
 
-.btn-voilet { 
-  color: #ffffff; 
-  background-color: #461B7D; 
-  border-color: #130269; 
-} 
- 
-.btn-voilet:hover, 
-.btn-voilet:focus, 
-.btn-voilet:active, 
-.btn-voilet.active, 
-.open .dropdown-toggle.btn-voilet { 
-  color: #ffffff; 
-  background-color: #49247A; 
-  border-color: #130269; 
-} 
- 
-.btn-voilet:active, 
-.btn-voilet.active, 
-.open .dropdown-toggle.btn-voilet { 
-  background-image: none; 
-} 
- 
-.btn-voilet.disabled, 
-.btn-voilet[disabled], 
-fieldset[disabled] .btn-voilet, 
-.btn-voilet.disabled:hover, 
-.btn-voilet[disabled]:hover, 
-fieldset[disabled] .btn-voilet:hover, 
-.btn-voilet.disabled:focus, 
-.btn-voilet[disabled]:focus, 
-fieldset[disabled] .btn-voilet:focus, 
-.btn-voilet.disabled:active, 
-.btn-voilet[disabled]:active, 
-fieldset[disabled] .btn-voilet:active, 
-.btn-voilet.disabled.active, 
-.btn-voilet[disabled].active, 
-fieldset[disabled] .btn-voilet.active { 
-  background-color: #461B7D; 
-  border-color: #130269; 
-} 
- 
-.btn-voilet .badge { 
-  color: #461B7D; 
-  background-color: #ffffff; 
+.btn-voilet {
+  color: #ffffff;
+  background-color: #0F995D;
+  border-color: #0F995D;
+}
+
+.btn-voilet:hover,
+.btn-voilet:focus,
+.btn-voilet:active,
+.btn-voilet.active,
+.open .dropdown-toggle.btn-voilet {
+  color: #ffffff;
+  background-color: #197732;
+  border-color: #0F995D;
+}
+
+.btn-voilet:active,
+.btn-voilet.active,
+.open .dropdown-toggle.btn-voilet {
+  background-image: none;
+}
+
+.btn-voilet.disabled,
+.btn-voilet[disabled],
+fieldset[disabled] .btn-voilet,
+.btn-voilet.disabled:hover,
+.btn-voilet[disabled]:hover,
+fieldset[disabled] .btn-voilet:hover,
+.btn-voilet.disabled:focus,
+.btn-voilet[disabled]:focus,
+fieldset[disabled] .btn-voilet:focus,
+.btn-voilet.disabled:active,
+.btn-voilet[disabled]:active,
+fieldset[disabled] .btn-voilet:active,
+.btn-voilet.disabled.active,
+.btn-voilet[disabled].active,
+fieldset[disabled] .btn-voilet.active {
+  background-color: #0F995D;
+  border-color: #0F995D;
+}
+
+.btn-voilet .badge {
+  color: #0F995D;
+  background-color: #ffffff;
 }
 
 
@@ -115,53 +122,53 @@ fieldset[disabled] .btn-voilet.active {
 Red color button
 */
 
-.btn-red { 
-  color: #ffffff; 
-  background-color: #E60C87; 
-  border-color: #69023C; 
-} 
- 
-.btn-red:hover, 
-.btn-red:focus, 
-.btn-red:active, 
-.btn-red.active, 
-.open .dropdown-toggle.btn-red { 
-  color: #ffffff; 
-  background-color: #7A245C; 
-  border-color: #69023C; 
-} 
- 
-.btn-red:active, 
-.btn-red.active, 
-.open .dropdown-toggle.btn-red { 
-  background-image: none; 
-} 
- 
-.btn-red.disabled, 
-.btn-red[disabled], 
-fieldset[disabled] .btn-red, 
-.btn-red.disabled:hover, 
-.btn-red[disabled]:hover, 
-fieldset[disabled] .btn-red:hover, 
-.btn-red.disabled:focus, 
-.btn-red[disabled]:focus, 
-fieldset[disabled] .btn-red:focus, 
-.btn-red.disabled:active, 
-.btn-red[disabled]:active, 
-fieldset[disabled] .btn-red:active, 
-.btn-red.disabled.active, 
-.btn-red[disabled].active, 
-fieldset[disabled] .btn-red.active { 
-  background-color: #E60C87; 
-  border-color: #69023C; 
-} 
- 
-.btn-red .badge { 
-  color: #E60C87; 
-  background-color: #ffffff; 
+.btn-red {
+  color: #ffffff;
+  background-color: #E60C87;
+  border-color: #69023C;
 }
 
-/* 
+.btn-red:hover,
+.btn-red:focus,
+.btn-red:active,
+.btn-red.active,
+.open .dropdown-toggle.btn-red {
+  color: #ffffff;
+  background-color: #7A245C;
+  border-color: #69023C;
+}
+
+.btn-red:active,
+.btn-red.active,
+.open .dropdown-toggle.btn-red {
+  background-image: none;
+}
+
+.btn-red.disabled,
+.btn-red[disabled],
+fieldset[disabled] .btn-red,
+.btn-red.disabled:hover,
+.btn-red[disabled]:hover,
+fieldset[disabled] .btn-red:hover,
+.btn-red.disabled:focus,
+.btn-red[disabled]:focus,
+fieldset[disabled] .btn-red:focus,
+.btn-red.disabled:active,
+.btn-red[disabled]:active,
+fieldset[disabled] .btn-red:active,
+.btn-red.disabled.active,
+.btn-red[disabled].active,
+fieldset[disabled] .btn-red.active {
+  background-color: #E60C87;
+  border-color: #69023C;
+}
+
+.btn-red .badge {
+  color: #E60C87;
+  background-color: #ffffff;
+}
+
+/*
 Sticky footer styles
 */
 

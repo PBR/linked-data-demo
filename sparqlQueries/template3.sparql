@@ -1,36 +1,52 @@
-PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX dummy: <http://rdf.biosemantics.org/ontologies/dummy/>
-PREFIX rdcMeta: <http://rdf.biosemantics.org/ontologies/rd-connect/>
-PREFIX iao: <http://purl.obolibrary.org/obo/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX dbpedia: <http://dbpedia.org/ontology/>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix WUR_ont: <http://www.wur.nl/purl/ontology#>
+prefix dct: <http://purl.org/dc/terms/>
+prefix sio: <http://semanticscience.org/resource/>
+prefix to: <http://purl.obolibrary.org/obo/TO#>
+prefix WUR_acc: <http://www.wur.nl/purl/accession#>
+prefix dbp: <http://dbpedia.org/property/>
+prefix dct: <http://purl.org/dc/terms/>
+prefix dbr: <http://dbpedia.org/resource/>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix om: <http://def.seegrid.csiro.au/ontology/om/om-lite#>
+prefix ds1: <http://localhost:8890/DAV/home/demo_user/rdf_sink/tomato_live.ttl>
+prefix ds2: <http://localhost:8890/DAV/home/demo_user/rdf_sink/Israel.ttl>
+prefix ds3: <http://localhost:8890/DAV/home/demo_user/rdf_sink/Netherlands.ttl>
+prefix ds4: <http://localhost:8890/DAV/home/demo_user/rdf_sink/Spain.ttl>
+prefix ds5: <http://localhost:8890/DAV/home/demo_user/rdf_sink/Belgium.ttl>
+prefix ds6: <http://localhost:8890/DAV/home/demo_user/rdf_sink/France.ttl>
+prefix ds7: <http://localhost:8890/DAV/home/demo_user/rdf_sink/sp.ttl>
 
-SELECT (COUNT( DISTINCT ?sampleURI) as ?numberOfSamples)  ?phenotypeURI ?phenotype ?diseaseURI ?disease ?biobank ?biobankURI ?registry ?registryURI ?region ?regionURI {
-     
- VALUES(?phenotypeInput ?regionURI) {(<#phenotype#> <#region#>)}   
-  {
-    ?phenotypeURI  rdfs:subClassOf* ?phenotypeInput.
-  } 
-  {    
-    ?donorURI dummy:hasDisease ?diseaseURI;
-               rdcMeta:59e1324d_567b_42e1_bc88_203004e660da ?phenotypeURI;               
-             dbpedia:birthPlace ?regionURI;
-             rdfs:seeAlso ?registryDatasetURI.
-  }   
-  {    
-    ?sampleURI rdcMeta:e297332a_00a9_4ed0_b661_00dbd35aff95 ?donorURI;
-               rdfs:seeAlso ?biobankDatasetURI.
-  }    
-  {    
-    ?biobankDatasetURI dct:title ?biobank;
-                      rdfs:seeAlso ?biobankURI.
-    ?registryDatasetURI dct:title ?registry;
-                      rdfs:seeAlso ?registryURI. 
-    ?diseaseURI rdfs:label ?disease.  
-    ?phenotypeURI rdfs:label ?phenotype.
-    {
-      ?regionURI rdfs:label ?region.
-      FILTER ( lang(?region) = "en")
-    }
-  }
-}  group by ?phenotypeURI ?phenotype ?diseaseURI ?disease ?biobank ?biobankURI ?registry ?registryURI ?region ?regionURI 
+select (count(distinct ?acc) as ?numberOfSamples)
+    #distinct ?acc ?pVal
+from ds1:#
+from ds2:#
+from ds3:#
+from ds4:#
+from ds5:#
+from ds6:#
+where {
+    ?acc a WUR_ont:id .
+    ?orPlant WUR_ont:has_id ?acc .
+    ?desPlant WUR_ont:descendant_of ?orPlant .
+
+    ?exp a <http://purl.obolibrary.org/obo/AGRO_00000370> .
+    ?exp <http://purl.obolibrary.org/obo/RO_0000057> ?desPlant .
+    ?exp dbp:location ?country .
+    ?exp sio:SIO_000219 ?obs .
+
+    ?obs a om:observation .
+    ?obs sio:SIO_000332 ?desPlant .
+    ?obs to:has_phenotype_variable ?trait .
+    ?trait a ?pVar .
+    ?trait dct:title ?pTitle .
+    ?trait to:has_phenotype_score ?pVal .
+
+    VALUES ?country {<#country#>} .
+    VALUES ?pTitle {"#phenotypeVariable#"} .
+    VALUES ?pVal {"#phenotypeValue#"} .
+
+    #VALUES ?country {dbr:Netherlands} .
+    #VALUES ?pTitle {"Fruit color"} .
+    #VALUES ?pVal {"5"} .
+}

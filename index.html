@@ -42,8 +42,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+
                 <a class="navbar-brand" href="http://www.dtls.nl/" target="_blank">
                     <img src="images/logo-dtl.png" alt="" class="img-thumbnail" width="154" height="136">
+                </a>
+
+                 <a class="navbar-brand" href="http://www.wur.nl/" target="_blank">
+                    <img src="images/logo-wur.png" alt="" class="img-thumbnail" width="258" height="136">
                 </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -51,7 +56,7 @@
                 <a class="navbar-brand" href="https://dtl-fair.atlassian.net/wiki/display/FDP/FAIR+Data+Point+Software+Specification" target="_blank">
                     <img src="images/logo-fdp.png" alt="" class="img-thumbnail" width="120" height="140">
                 </a>
-                <ul class="nav navbar-nav">                    
+                <ul class="nav navbar-nav">
                     <li>
                         <a href="#">About</a>
                     </li>
@@ -66,11 +71,11 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-            
+
             <div class="page-header text-center">
               <h1>FAIR Data Demonstrator</h1>
             </div>
-            
+
             <div class="panel panel-info" id="step1">
               <div class="panel-heading">
                 <h3 class="panel-title">Step 1 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> Select query:</h3>
@@ -88,26 +93,13 @@
               <div class="panel-body">
                 <div class="row" id="region">
                   <div class="col-md-4"><button type="button" class="btn btn-voilet btn-lg btn-block">Region</button></div>
-                  <div class="col-md-4"><button type="button" class="btn btn-default btn-lg btn-block"><i>type</i></button></div>                  
-                  <div class="col-md-4">                      
+                  <div class="col-md-4"><button type="button" class="btn btn-default btn-lg btn-block"><i>type</i></button></div>
+                  <div class="col-md-4">
                       <input class="form-control" type="text" id="regionOption" list="regionDatalist" placeholder="e.g. Paternopoli" autocomplete="off">
                       <datalist id="regionDatalist"></datalist>
                   </div>
                 </div>
-                <p></p>
-                <div class="row" id="disease">
-                  <div class="col-md-4"><button type="button" class="btn btn-voilet btn-lg btn-block">Disease</button></div>
-                  <div class="col-md-4"><button type="button" class="btn btn-default btn-lg btn-block"><i>type</i></button></div>
-<!--                  <div class="col-md-4">
-                      <select class="form-control" id="diseaseOption">
-                      </select>
-                  </div>-->
-                  <div class="col-md-4">                      
-                      <input class="form-control" type="text" id="diseaseOption" list="diseaseDatalist" placeholder="e.g. Ring chromosome 14" autocomplete="off">
-                      <datalist id="diseaseDatalist"></datalist>
-                  </div>
-                </div>
-                <p></p>
+
                 <div class="row" id="phenotype">
                   <div class="col-md-4"><button type="button" class="btn btn-voilet btn-lg btn-block">Phenotype</button></div>
                   <div class="col-md-4"><button type="button" class="btn btn-default btn-lg btn-block"><i>type</i></button></div>
@@ -117,39 +109,84 @@
                           <option class="text-center" value="rdfs:subClassOf">subClassOf</option>
                       </select>
                   </div> -->
-                  <div class="col-md-4 ">                      
+                  <div class="col-md-4 ">
                       <input class="form-control" type="text" id="phenotypeOption" list="phenotypeDatalist" placeholder="e.g. Wide mouth" autocomplete="off">
                       <datalist id="phenotypeDatalist"></datalist>
                   </div>
                 </div>
                 <p></p>
-                <div class="row" id="karyotype">
-                  <div class="col-md-4"><button type="button" class="btn btn-voilet btn-lg btn-block">Karyotype</button></div>
+
+
+                <p></p>
+                <div class="row" id="country">
+                  <div class="col-md-4"><button type="button" class="btn btn-voilet btn-lg btn-block">Country</button></div>
                   <div class="col-md-4"><button type="button" class="btn btn-default btn-lg btn-block"><i>type</i></button></div>
-<!--                  <div class="col-md-4">
-                      <select class="form-control" id="karyotypeOption">
+<!--                   <div class="col-md-4">
+                      <select class="btn btn-voilet btn-lg btn-block" id="phenotypeProperty">
+                          <option class="text-center" value="rdf:type">type</option>
+                          <option class="text-center" value="rdfs:subClassOf">subClassOf</option>
                       </select>
-                  </div>-->
-                  <div class="col-md-4">                      
-                      <input class="form-control" type="text" id="karyotypeOption" list="karyotypeDatalist" placeholder="e.g. Terminal deletion imbalance" autocomplete="off">
-                      <datalist id="karyotypeDatalist"></datalist>
+                  </div> -->
+                  <div class="col-md-4 ">
+                      <input class="form-control" type="text" id="countryOption" list="countryDatalist" placeholder="e.g. Netherlands" autocomplete="off">
+                      <datalist id="countryDatalist"></datalist>
                   </div>
                 </div>
                 <p></p>
-                
-                <div class="row" id="sampleType">
-                  <div class="col-md-4"><button type="button" class="btn btn-voilet btn-lg btn-block">Sample Type</button></div>
+
+                <p></p>
+                <div class="row" id="biologicalStatus">
+                  <div class="col-md-4"><button type="button" class="btn btn-voilet btn-lg btn-block">Biological status</button></div>
                   <div class="col-md-4"><button type="button" class="btn btn-default btn-lg btn-block"><i>type</i></button></div>
-<!--                  <div class="col-md-4">
-                      <select class="form-control" id="sampleTypeOption">
+<!--                   <div class="col-md-4">
+                      <select class="btn btn-voilet btn-lg btn-block" id="phenotypeProperty">
+                          <option class="text-center" value="rdf:type">type</option>
+                          <option class="text-center" value="rdfs:subClassOf">subClassOf</option>
                       </select>
-                  </div>-->
-                  <div class="col-md-4">                      
-                      <input class="form-control" type="text" id="sampleTypeOption" list="sampleTypeDatalist" placeholder="e.g. DNA Specimen" autocomplete="off">
-                      <datalist id="sampleTypeDatalist"></datalist>
+                  </div> -->
+                  <div class="col-md-4 ">
+                      <input class="form-control" type="text" id="biologicalStatusOption" list="biologicalStatusDatalist" placeholder="e.g. wild" autocomplete="off">
+                      <datalist id="biologicalStatusDatalist"></datalist>
                   </div>
                 </div>
                 <p></p>
+
+
+                <p></p>
+                <div class="row" id="phenotypeVariable">
+                  <div class="col-md-4"><button type="button" class="btn btn-voilet btn-lg btn-block">Phenotype variable</button></div>
+                  <div class="col-md-4"><button type="button" class="btn btn-default btn-lg btn-block"><i>type</i></button></div>
+<!--                   <div class="col-md-4">
+                      <select class="btn btn-voilet btn-lg btn-block" id="phenotypeProperty">
+                          <option class="text-center" value="rdf:type">type</option>
+                          <option class="text-center" value="rdfs:subClassOf">subClassOf</option>
+                      </select>
+                  </div> -->
+                  <div class="col-md-4 ">
+                      <input class="form-control" type="text" id="phenotypeVariableOption" list="phenotypeVariableDatalist" placeholder="e.g. Fruit color" autocomplete="off">
+                      <datalist id="phenotypeVariableDatalist"></datalist>
+                  </div>
+                </div>
+                <p></p>
+
+                <p></p>
+                <div class="row" id="phenotypeValue">
+                  <div class="col-md-4"><button type="button" class="btn btn-voilet btn-lg btn-block">Phenotype value</button></div>
+                  <div class="col-md-4"><button type="button" class="btn btn-default btn-lg btn-block"><i>type</i></button></div>
+<!--                   <div class="col-md-4">
+                      <select class="btn btn-voilet btn-lg btn-block" id="phenotypeProperty">
+                          <option class="text-center" value="rdf:type">type</option>
+                          <option class="text-center" value="rdfs:subClassOf">subClassOf</option>
+                      </select>
+                  </div> -->
+                  <div class="col-md-4 ">
+                      <input class="form-control" type="text" id="phenotypeValueOption" list="phenotypeValueDatalist" placeholder="e.g. yellow" autocomplete="off">
+                      <datalist id="phenotypeValueDatalist"></datalist>
+                  </div>
+                </div>
+                <p></p>
+
+
                 <div class="row" id="breakpoint">
                   <div class="col-md-4"><button type="button" class="btn btn-voilet btn-lg btn-block">Breakpoint</button></div>
                   <div class="col-md-4"><button type="button" class="btn btn-default btn-lg btn-block"><i>type</i></button></div>
@@ -157,7 +194,7 @@
                       <select class="form-control" id="breakpointOption">
                       </select>
                   </div>-->
-                  <div class="col-md-4">                      
+                  <div class="col-md-4">
                       <input class="form-control" type="text" id="breakpointOption" list="breakpointDatalist" placeholder="e.g. DISTAL" autocomplete="off">
                       <datalist id="breakpointDatalist"></datalist>
                   </div>
@@ -172,68 +209,68 @@
                       </button>
                   </div>
                   <div class="col-md-4"></div>
-                </div>                
+                </div>
                </div>
-            </div>            
-                
-            <div class="alert alert-danger fade in" id="errorPanel">                  
-            </div> 
-            <div class="alert alert-info fade in" id="infoPanel">                  
-            </div>  
-                
+            </div>
+
+            <div class="alert alert-danger fade in" id="errorPanel">
+            </div>
+            <div class="alert alert-info fade in" id="infoPanel">
+            </div>
+
             <div class="panel panel-info" id="step3">
               <div class="panel-heading">
                 <h3 class="panel-title">Step 3 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> Result:</h3>
               </div>
               <div class="panel-body">
-                  
-            <div class="alert alert-info fade in" id="noResultPanel">   
+
+            <div class="alert alert-info fade in" id="noResultPanel">
                 <p><strong> No result :</strong> Sorry no result available for these query params</p>
-            </div>  
+            </div>
                 <table class="table table-striped" id="results_table">
             </table>
               </div>
             </div>
 
-       
+
 
             </div>
         </div>
     </div>
     <!-- /.container -->
-    
+
 
     <div id="footer">
       <div class="container">
         <p class="muted credit">Supporting projects :-
-              <a target="_blank" href="http://rd-connect.eu/">RD-CONNECT</a>               
+              <a target="_blank" href="http://rd-connect.eu/">RD-CONNECT</a>
               --
               <a target="_blank" href="https://www.elixir-europe.org/">
-                  ELIXIR</a> 
+                  ELIXIR</a>
               --
               <a target="_blank" href="https://www.bbmri.nl/">
-                  BBMRI-NL</a>         
+                  BBMRI-NL</a>
         </p>
       </div>
-    </div>   
+    </div>
 
-   
+
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
-    
+
     <!-- configuration files -->
     <script src="js/config.js"></script>
-    
+
     <!-- demo -->
     <script src="js/demo.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-    
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>    <script src="js/simplePagination.js"></script>
-    
+
     <script src="js/jquery.buttonLoader.js"></script>
 
 </body>
