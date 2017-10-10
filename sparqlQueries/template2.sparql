@@ -7,6 +7,7 @@ prefix WUR_acc: <http://www.wur.nl/purl/accession#>
 prefix dbp: <http://dbpedia.org/property/>
 prefix dct: <http://purl.org/dc/terms/>
 prefix dbr: <http://dbpedia.org/resource/>
+prefix om: <http://def.seegrid.csiro.au/ontology/om/om-lite#>
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 prefix ds1: <http://localhost:8890/DAV/home/demo_user/rdf_sink/tomato_live.ttl>
 prefix ds2: <http://localhost:8890/DAV/home/demo_user/rdf_sink/Israel.ttl>
@@ -15,18 +16,29 @@ prefix ds3: <http://localhost:8890/DAV/home/demo_user/rdf_sink/Spain.ttl>
 prefix ds4: <http://localhost:8890/DAV/home/demo_user/rdf_sink/Belgium.ttl>
 prefix ds5: <http://localhost:8890/DAV/home/demo_user/rdf_sink/France.ttl>
 
-select (count(distinct ?acc1) as ?numberOfSamples)
+select
+  distinct (?url as ?Accession)
 from ds5:#
 from ds4:#
 from ds3:#
 from ds2:#
 from ds1:#
 where {
-  ?acc1 a WUR_ont:id .
-  ?orPlant1 WUR_ont:has_id ?acc1 .
-  ?desPlant1 WUR_ont:descendant_of ?orPlant1 .
+  ?acc a WUR_ont:id .
+  ?orPlant WUR_ont:has_id ?acc .
+  ?acc dct:title ?name .
+  bind(concat("<a href=\"", ?acc, "\">", ?name, "</a>") as ?url) .
+  ?desPlant WUR_ont:descendant_of ?orPlant .
 
-  ?exp <http://purl.obolibrary.org/obo/RO_0000057> ?desPlant1 .
-  ?exp dbp:location ?country .
-  VALUES ?country {<#country#>} .
+  ?obs a om:observation .
+  ?obs sio:SIO_000332 ?desPlant .
+  ?obs to:has_phenotype_variable ?trait .
+  ?trait a ?pVar .
+  ?trait dct:title ?pTitle .
+  ?trait to:has_phenotype_score ?pVal .
+
+  VALUES ?pTitle {"#phenotypeVariable#"} .
+  VALUES ?pVal {"#phenotypeValue#"} .
+  #values ?pTitle{"Fruit color" } .
+  #values ?pVal{"yellow"}
 }

@@ -1,0 +1,867 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/getPhenotypeValues.sparql",
+			"settings":
+			{
+				"buffer_size": 1437,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nprefix WUR_ont: <http://www.wur.nl/purl/ontology#>\nprefix dct: <http://purl.org/dc/terms/>\nprefix sio: <http://semanticscience.org/resource/>\nprefix to: <http://purl.obolibrary.org/obo/TO#>\nprefix WUR_acc: <http://www.wur.nl/purl/accession#>\nprefix dbp: <http://dbpedia.org/property/>\nprefix dct: <http://purl.org/dc/terms/>\nprefix dbr: <http://dbpedia.org/resource/>\nprefix om: <http://def.seegrid.csiro.au/ontology/om/om-lite#>\nprefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nprefix ds1: <http://localhost:8890/DAV/home/demo_user/rdf_sink/tomato_live.ttl>\nprefix ds2: <http://localhost:8890/DAV/home/demo_user/rdf_sink/Israel.ttl>\nprefix ds3: <http://localhost:8890/DAV/home/demo_user/rdf_sink/Netherlands.ttl>\nprefix ds3: <http://localhost:8890/DAV/home/demo_user/rdf_sink/Spain.ttl>\nprefix ds4: <http://localhost:8890/DAV/home/demo_user/rdf_sink/Belgium.ttl>\nprefix ds5: <http://localhost:8890/DAV/home/demo_user/rdf_sink/France.ttl>\n\nselect\n  distinct (?url as ?Accession)\nfrom ds5:#\nfrom ds4:#\nfrom ds3:#\nfrom ds2:#\nfrom ds1:#\nwhere {\n    ?acc a WUR_ont:id .\n    ?orPlant WUR_ont:has_id ?acc .\n    ?acc dct:title ?name .\n    bind(concat(\"<a href=\\\"\", ?acc, \"\\\">\", ?name, \"</a>\") as ?url) .\n    ?desPlant WUR_ont:descendant_of ?orPlant .\n\n    ?obs a om:observation .\n    ?obs sio:SIO_000332 ?desPlant .\n    ?obs to:has_phenotype_variable ?trait .\n    ?trait a ?pVar .\n    ?trait dct:title ?pTitle .\n    ?trait to:has_phenotype_score ?pVal .\n\n    VALUES ?pTitle {\"#phenotypeVariable#\"} .\n    VALUES ?pVal {\"#phenotypeValue#\"} .\n    #values ?pTitle{\"Fruit color\" } .\n    #values ?pVal{\"yellow\"}\n}\n",
+			"file": "/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/template2.sparql",
+			"file_size": 1633,
+			"file_write_time": 131521181295939000,
+			"settings":
+			{
+				"buffer_size": 1663,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nprefix WUR_ont: <http://www.wur.nl/purl/ontology#>\nprefix dct: <http://purl.org/dc/terms/>\nprefix sio: <http://semanticscience.org/resource/>\nprefix to: <http://purl.obolibrary.org/obo/TO#>\nprefix WUR_acc: <http://www.wur.nl/purl/accession#>\nprefix dbp: <http://dbpedia.org/property/>\nprefix dct: <http://purl.org/dc/terms/>\nprefix dbr: <http://dbpedia.org/resource/>\nprefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nprefix ds1: <http://localhost:8890/DAV/home/demo_user/rdf_sink/tomato_live.ttl>\nprefix ds2: <http://localhost:8890/DAV/home/demo_user/rdf_sink/Israel.ttl>\nprefix ds3: <http://localhost:8890/DAV/home/demo_user/rdf_sink/Netherlands.ttl>\nprefix ds3: <http://localhost:8890/DAV/home/demo_user/rdf_sink/Spain.ttl>\nprefix ds4: <http://localhost:8890/DAV/home/demo_user/rdf_sink/Belgium.ttl>\nprefix ds5: <http://localhost:8890/DAV/home/demo_user/rdf_sink/France.ttl>\n\nselect (count(distinct ?acc1) as ?numberOfSamples)\nfrom ds5:#\nfrom ds4:#\nfrom ds3:#\nfrom ds2:#\nfrom ds1:#\nwhere {\n    ?acc1 a WUR_ont:id .\n    ?orPlant1 WUR_ont:has_id ?acc1 .\n    ?desPlant1 WUR_ont:descendant_of ?orPlant1 .\n\n    ?exp <http://purl.obolibrary.org/obo/RO_0000057> ?desPlant1 .\n    ?exp dbp:location ?country .\n    VALUES ?country {<#country#>} .\n}\n",
+			"file": "/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/template3.sparql",
+			"file_size": 1291,
+			"file_write_time": 131407119906510000,
+			"settings":
+			{
+				"buffer_size": 1303,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nprefix WUR_ont: <http://www.wur.nl/purl/ontology#>\nprefix dct: <http://purl.org/dc/terms/>\nprefix sio: <http://semanticscience.org/resource/>\nprefix to: <http://purl.obolibrary.org/obo/TO#>\nprefix WUR_acc: <http://www.wur.nl/purl/accession#>\nprefix dbp: <http://dbpedia.org/property/>\nprefix dct: <http://purl.org/dc/terms/>\nprefix dbr: <http://dbpedia.org/resource/>\nprefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nprefix ds1: <http://localhost:8890/DAV/home/demo_user/rdf_sink/tomato_live.ttl>\nprefix ds2: <http://localhost:8890/DAV/home/demo_user/rdf_sink/Israel.ttl>\nprefix ds3: <http://localhost:8890/DAV/home/demo_user/rdf_sink/Netherlands.ttl>\nprefix ds3: <http://localhost:8890/DAV/home/demo_user/rdf_sink/Spain.ttl>\nprefix ds4: <http://localhost:8890/DAV/home/demo_user/rdf_sink/Belgium.ttl>\nprefix ds5: <http://localhost:8890/DAV/home/demo_user/rdf_sink/France.ttl>\n\nselect\n  distinct (?url as ?Accession)\nfrom ds5:#\nfrom ds4:#\nfrom ds3:#\nfrom ds2:#\nfrom ds1:#\nwhere {\n    ?acc a WUR_ont:id .\n    ?acc dct:title ?name .\n    ?orPlant WUR_ont:has_id ?acc .\n    bind(concat(\"<a href=\\\"\", ?acc, \"\\\">\", ?name, \"</a>\") as ?url) .\n    ?desPlant WUR_ont:descendant_of ?orPlant .\n\n    ?exp <http://purl.obolibrary.org/obo/RO_0000057> ?desPlant .\n    ?exp dbp:location ?country .\n    VALUES ?country {<#country#>} .\n}\n",
+			"file": "/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/template4.sparql",
+			"file_size": 1365,
+			"file_write_time": 131521181331219000,
+			"settings":
+			{
+				"buffer_size": 1381,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/template7.sparql",
+			"settings":
+			{
+				"buffer_size": 1681,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nprefix WUR_ont: <http://www.wur.nl/purl/ontology#>\nprefix dct: <http://purl.org/dc/terms/>\nprefix sio: <http://semanticscience.org/resource/>\nprefix to: <http://purl.obolibrary.org/obo/TO#>\nprefix WUR_acc: <http://www.wur.nl/purl/accession#>\nprefix dbp: <http://dbpedia.org/property/>\nprefix dct: <http://purl.org/dc/terms/>\nprefix dbr: <http://dbpedia.org/resource/>\nprefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nprefix ds1: <http://localhost:8890/DAV/home/demo_user/rdf_sink/tomato_live.ttl>\nprefix ds2: <http://localhost:8890/DAV/home/demo_user/rdf_sink/Israel.ttl>\nprefix ds3: <http://localhost:8890/DAV/home/demo_user/rdf_sink/Netherlands.ttl>\nprefix ds4: <http://localhost:8890/DAV/home/demo_user/rdf_sink/Spain.ttl>\nprefix ds5: <http://localhost:8890/DAV/home/demo_user/rdf_sink/Belgium.ttl>\nprefix ds6: <http://localhost:8890/DAV/home/demo_user/rdf_sink/France.ttl>\nprefix ds7: <http://localhost:8890/DAV/home/demo_user/rdf_sink/sp.ttl>\n\nselect distinct\n    #(?traitURI as ?url)\n    (?placeholder as ?url)\n    (?phenotypeVariableURI as ?value)\n    (str(?traitLabel) as ?traitName)\nfrom ds1:#\nfrom ds2:#\nfrom ds3:#\nfrom ds4:#\nfrom ds5:#\nfrom ds6:#\nfrom ds7:#\nwhere {\n    ?exp a <http://purl.obolibrary.org/obo/AGRO_00000370> .\n    ?exp sio:SIO_000219 ?obsURI .\n    ?obsURI to:has_phenotype_variable ?traitURI  .\n    ?traitURI to:has_phenotype_score ?traitValue .\n    ?traitURI dct:title ?phenotypeVariableURI .\n    optional (?traitURI rdfs:label ?traitLabel)\n    #filter (?traitTitle = ) .\n}\n",
+			"file": "/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/getPhenotypeVariables.sparql",
+			"file_size": 1479,
+			"file_write_time": 131407949168540000,
+			"settings":
+			{
+				"buffer_size": 1564,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/papou001/git/linked-data-demo/js/config.js",
+			"settings":
+			{
+				"buffer_size": 3617,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/papou001/git/linked-data-demo/js/bootstrap.min.js",
+			"settings":
+			{
+				"buffer_size": 36868,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/template8.sparql",
+			"settings":
+			{
+				"buffer_size": 1743,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/template0.sparql",
+			"settings":
+			{
+				"buffer_size": 1389,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nprefix WUR_ont: <http://www.wur.nl/purl/ontology#>\nprefix dct: <http://purl.org/dc/terms/>\nprefix sio: <http://semanticscience.org/resource/>\nprefix to: <http://purl.obolibrary.org/obo/TO#>\nprefix WUR_acc: <http://www.wur.nl/purl/accession#>\nprefix dbp: <http://dbpedia.org/property/>\nprefix dct: <http://purl.org/dc/terms/>\nprefix dbr: <http://dbpedia.org/resource/>\nprefix om: <http://def.seegrid.csiro.au/ontology/om/om-lite#>\nprefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nprefix ds1: <http://localhost:8890/DAV/home/demo_user/rdf_sink/tomato_live.ttl>\nprefix ds2: <http://localhost:8890/DAV/home/demo_user/rdf_sink/Israel.ttl>\nprefix ds3: <http://localhost:8890/DAV/home/demo_user/rdf_sink/Netherlands.ttl>\nprefix ds3: <http://localhost:8890/DAV/home/demo_user/rdf_sink/Spain.ttl>\nprefix ds4: <http://localhost:8890/DAV/home/demo_user/rdf_sink/Belgium.ttl>\nprefix ds5: <http://localhost:8890/DAV/home/demo_user/rdf_sink/France.ttl>\n\nselect\n    (count(distinct ?acc) as ?number)\n    #distinct ?pVar ?pTitle\nfrom ds5:#\nfrom ds4:#\nfrom ds3:#\nfrom ds2:#\nfrom ds1:#\nwhere {\n    ?acc a WUR_ont:id .\n    ?orPlant WUR_ont:has_id ?acc .\n    ?desPlant WUR_ont:descendant_of ?orPlant .\n\n    ?obs a om:observation .\n    ?obs sio:SIO_000332 ?desPlant .\n    ?obs to:has_phenotype_variable ?trait .\n    ?trait a ?pVar .\n    ?trait dct:title ?pTitle .\n    ?trait to:has_phenotype_score ?pVal .\n\n    VALUES ?pTitle {\"#phenotypeVariable#\"} .\n    VALUES ?pVal {\"#phenotypeValue#\"} .\n    #values ?pTitle{\"Fruit color\" } .\n    #values ?pVal{\"yellow\"}\n}\n",
+			"file": "/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/template1.sparql",
+			"file_size": 1571,
+			"file_write_time": 131521178305374396,
+			"settings":
+			{
+				"buffer_size": 1601,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/Python/Python.sublime-build",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				],
+				[
+					"Packages/SublimeREPL/sublimerepl_build_system_hack.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 235.0,
+		"last_filter": "Package Control: spa",
+		"selected_items":
+		[
+			[
+				"Package Control: spa",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"glue",
+				"Glue - Launch"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"git status",
+				"Git: Status"
+			],
+			[
+				"git ",
+				"Git: Status"
+			],
+			[
+				"git pull",
+				"Git: Pull Current Branch"
+			],
+			[
+				"git init",
+				"Git: Init"
+			],
+			[
+				"git inig",
+				"GitGutter: Compare Against Origin"
+			],
+			[
+				"Snippet: ",
+				"Snippet: Lorem ipsum"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"key",
+				"Preferences: Key Bindings"
+			],
+			[
+				"preferences",
+				"Preferences: Settings"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"python pep",
+				"User: Python PEP8 Autoformat"
+			],
+			[
+				"package control inst",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: inst",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 418.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"dir",
+			"ls",
+			"git",
+			"ln -s /Applications/Sublime\\ Text\\ 2.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl",
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"echo \"y\"",
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/papou001/git/linked-data-demo",
+		"/C/Users/papou001/git/linked-data-demo/css",
+		"/C/Users/papou001/git/linked-data-demo/js",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant",
+		"/C/Users/papou001/git/linked-data-demo/sublime_project"
+	],
+	"file_history":
+	[
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/template3.sparql",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/template6.sparql",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/template5.sparql",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/template4.sparql",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/template1.sparql",
+		"/C/Users/papou001/git/linked-data-demo/js/demo.js",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/getCountries.sparql",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/getBreakpoints.sparql",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/template2.sparql",
+		"/C/Users/papou001/git/linked-data-demo/index.html",
+		"/C/Users/papou001/git/linked-data-demo/sublime_project/ldd.sublime-workspace",
+		"/C/Users/papou001/git/linked-data-demo/css/custom.css",
+		"/C/Users/papou001/git/linked-data-demo/css/buttonLoader.css",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/getBiologicalStatus.sparql",
+		"/C/Users/papou001/git/linked-data-demo/css/bootstrap.min.css",
+		"//WURNET.NL/Homes/papou001/AppData/FolderRedirection/Desktop/logo-wur.png",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/getPhenotypeVariables.sparql",
+		"/C/Users/papou001/git/linked-data-demo/js/demo_original.js",
+		"/C/Users/papou001/git/linked-data-demo/js/config_original.js",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries_disease/template7.sparql",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries_disease/getPhenotypes.sparql",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/template9.sparql",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/getPhenotypes.sparql",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/getDiseases.sparql",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/getKaryotypes.sparql",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/template7.sparql",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries_disease/template2.sparql",
+		"/C/Users/papou001/git/linked-data-demo/js/config.js",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/template10.sparql",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/template8.sparql",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/getRegions.sparql",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/getSampleTypes.sparql",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries/template9.sparql",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries/template8.sparql",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries/template7.sparql",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries/template6.sparql",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries/getBreakpoints.sparql",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries/getDiseases.sparql",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries/getKaryotypes.sparql",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries/getPhenotypes.sparql",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries/getRegions.sparql",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries/getSampleTypes.sparql",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries/template3.sparql",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries/template4.sparql",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries/template5.sparql",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries/template2.sparql",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries/template1.sparql",
+		"/C/Users/papou001/test/subl-test.py",
+		"/C/Users/papou001/git/linked-data-demo/sparqlQueries/template10.sparql",
+		"//WURNET.NL/Homes/papou001/AppData/FolderRedirection/Desktop/explanations.docx",
+		"/C/Users/papou001/C_Documents/Sublime Text Build 3126 x64/Data/Packages/User/Glue.sublime-settings",
+		"/C/Users/papou001/C_Documents/Sublime Text Build 3126 x64/Data/Packages/Glue/keymaps/Default (Windows).sublime-keymap",
+		"//WURNET.NL/Homes/papou001/AppData/FolderRedirection/Desktop/test/subl-test.py",
+		"//WURNET.NL/Homes/papou001/AppData/FolderRedirection/Desktop/subl-test.py",
+		"/C/Users/papou001/C_Documents/Sublime Text Build 3126 x64/Data/Packages/User/SublimeREPL.sublime-settings",
+		"/C/Users/papou001/C_Documents/Sublime Text Build 3126 x64/Data/Packages/User/python3.sublime-build",
+		"/C/Users/papou001/C_Documents/Sublime Text Build 3126 x64/Data/Packages/SublimeCodeIntel/SublimeCodeIntel.sublime-settings"
+	],
+	"find":
+	{
+		"height": 38.0
+	},
+	"find_in_files":
+	{
+		"height": 98.0,
+		"where_history":
+		[
+			"<project>"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"#287A40",
+			"#bce8f1",
+			"#BCE8F1",
+			"#130269",
+			"#49247A",
+			"#31708F",
+			"#D9EDF7",
+			"panel",
+			"navbar",
+			"color",
+			"div-container",
+			"container",
+			"img-",
+			"country",
+			"countr",
+			"phenotypeVar",
+			"phenotype",
+			"phenotypeVariableURI",
+			"country",
+			"URI",
+			"country",
+			"resu",
+			"demo",
+			"phenotypeDatalist",
+			"karyotypeOption",
+			"id=\"phenotype\"",
+			"geCoun",
+			"geCountry",
+			"phenotype",
+			" phenotype",
+			"geCountries",
+			"sparqlQueries",
+			"sparqlQueries/",
+			"a",
+			"5"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"#D9F7E1",
+			"#287A40",
+			"#0F995D",
+			"#287A40",
+			"#D9F7E1"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 4,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/getPhenotypeValues.sparql",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1437,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1010,
+								1010
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/SPARQL/sparql.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/template2.sparql",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1663,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1637,
+								1637
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/SPARQL/sparql.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/template3.sparql",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1303,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1269,
+								1269
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/SPARQL/sparql.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/template4.sparql",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1381,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1347,
+								1347
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/SPARQL/sparql.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/template7.sparql",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1681,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								872,
+								872
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/SPARQL/sparql.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/getPhenotypeVariables.sparql",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1564,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1564,
+								1564
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/SPARQL/sparql.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/C/Users/papou001/git/linked-data-demo/js/config.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3617,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 298.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 7,
+					"file": "/C/Users/papou001/git/linked-data-demo/js/bootstrap.min.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 36868,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1698,
+								1698
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/C/Users/papou001/git/linked-data-demo/js/config.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3617,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								212,
+								212
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 300.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/template8.sparql",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1743,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1157,
+								1157
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/SPARQL/sparql.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/template0.sparql",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1389,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/SPARQL/sparql.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "/C/Users/papou001/git/linked-data-demo/sparqlQueries_plant/template1.sparql",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1601,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1575,
+								1575
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/SPARQL/sparql.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 38.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.45250434761,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 132.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git-init":
+	{
+		"height": 132.0
+	},
+	"output.git-remote":
+	{
+		"height": 132.0
+	},
+	"pinned_build_system": "Packages/Python/Python.sublime-build",
+	"project": "ldd.sublime-project",
+	"replace":
+	{
+		"height": 68.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 453.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

@@ -17,7 +17,7 @@ prefix ds4: <http://localhost:8890/DAV/home/demo_user/rdf_sink/Belgium.ttl>
 prefix ds5: <http://localhost:8890/DAV/home/demo_user/rdf_sink/France.ttl>
 
 select
-  (count(distinct ?acc) as ?numberOfSamples)
+  (count(distinct ?acc) as ?number)
   #distinct ?pVar ?pTitle
 from ds5:#
 from ds4:#
