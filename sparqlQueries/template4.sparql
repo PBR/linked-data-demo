@@ -19,14 +19,6 @@ prefix ds8: <http://snowball:8890/DAV/home/papou001/rdf_sink/sp_edit.ttl>
 
 select
   distinct (?url as ?Accession)
-from ds1:#
-from ds2:#
-from ds3:#
-from ds4:#
-from ds5:#
-from ds6:#
-from ds7:#
-from ds8:#
 where {
   ?acc a WUR_ont:id .
   ?acc dct:title ?name .

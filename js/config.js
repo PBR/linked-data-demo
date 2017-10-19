@@ -1,6 +1,6 @@
 //var SPARQL_ENDPOINT = 'http://dev-vm.fair-dtls.vm.surfsara.nl:8891/sparql?query='
 //var SPARQL_ENDPOINT = 'http://localhost:8890/sparql?default-graph-uri=http://localhost:8890/DAV/home/demo_user/rdf_sink&query='
-var SPARQL_ENDPOINT = 'http://snowball:8890/sparql?default-graph-uri=http://snowball:8890/DAV/home/papou001/rdf_sink&query='
+var SPARQL_ENDPOINT = 'http://snowball:8890/sparql?query='
 
 var TEMPLATE_QUERIES = {
         1 : {
