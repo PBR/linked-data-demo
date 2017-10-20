@@ -59,6 +59,7 @@ document.getElementById("template").onchange=function(){
     }
     if(TEMPLATE_QUERIES[selected].variables.indexOf('karyotype') > -1) {
         $("#karyotype").removeClass('hidden');
+
     }
     if(TEMPLATE_QUERIES[selected].variables.indexOf('country') > -1) {
         $("#country").removeClass('hidden');
@@ -75,9 +76,9 @@ document.getElementById("template").onchange=function(){
     // Fill step2
     TEMPLATE_QUERIES[selected].variables.forEach(function(entry){
 
-        var service = encodeURI(SPARQL_ENDPOINT + VARIABLE_QUERIES[entry]
-                + '&format=json').replace(/#/g, "%23");
-
+        //var service = encodeURI(SPARQL_ENDPOINT + VARIABLE_QUERIES[entry] + '&format=json').replace(/#/g, "%23");
+        var service = encodeURI(SPARQL_ENDPOINT + 'qID=' + VARIABLE_QUERY_IDs[entry]);
+        
         $.ajax({url: service , dataType: 'jsonp', async: false,
             success: function(result){
                 var inputOption = document.getElementById(entry + 'Option');
@@ -122,7 +123,8 @@ document.getElementById("process").onclick=function(){
     $("#step3").addClass('hidden');
     $("#noResultPanel").addClass('hidden');
     var selected = $("#template" ).val();
-    var query = TEMPLATE_QUERIES[selected].query
+    //var query = TEMPLATE_QUERIES[selected].query
+    var query = TEMPLATE_QUERIES[selected].queryGet
     var isValueMissing = false;
 
     //Replace variable values in the query
