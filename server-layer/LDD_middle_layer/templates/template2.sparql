@@ -9,9 +9,25 @@ prefix dct: <http://purl.org/dc/terms/>
 prefix dbr: <http://dbpedia.org/resource/>
 prefix om: <http://def.seegrid.csiro.au/ontology/om/om-lite#>
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix ds1: <http://snowball:8890/DAV/home/papou001/rdf_sink/tomato_live.ttl>
+prefix ds2: <http://snowball:8890/DAV/home/papou001/rdf_sink/Israel.ttl>
+prefix ds3: <http://snowball:8890/DAV/home/papou001/rdf_sink/Netherlands.ttl>
+prefix ds4: <http://snowball:8890/DAV/home/papou001/rdf_sink/Spain.ttl>
+prefix ds5: <http://snowball:8890/DAV/home/papou001/rdf_sink/Belgium.ttl>
+prefix ds6: <http://snowball:8890/DAV/home/papou001/rdf_sink/France.ttl>
+prefix ds7: <http://snowball:8890/DAV/home/papou001/rdf_sink/MCPD.ttl>
+prefix ds8: <http://snowball:8890/DAV/home/papou001/rdf_sink/sp_edit.ttl>
 
 select
   distinct (?url as ?Accession)
+from ds1:#
+from ds2:#
+from ds3:#
+from ds4:#
+from ds5:#
+from ds6:#
+from ds7:#
+from ds8:#
 where {
   ?acc a WUR_ont:id .
   ?orPlant WUR_ont:has_id ?acc .
