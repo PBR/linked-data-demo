@@ -1,45 +1,28 @@
 prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 prefix WUR_ont: <http://www.wur.nl/purl/ontology#>
-prefix dct: <http://purl.org/dc/terms/>
+prefix dcterms: <http://purl.org/dc/terms/>
 prefix sio: <http://semanticscience.org/resource/>
 prefix to: <http://purl.obolibrary.org/obo/TO#>
 prefix WUR_acc: <http://www.wur.nl/purl/accession#>
 prefix dbp: <http://dbpedia.org/property/>
-prefix dct: <http://purl.org/dc/terms/>
 prefix dbr: <http://dbpedia.org/resource/>
 prefix om: <http://def.seegrid.csiro.au/ontology/om/om-lite#>
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-prefix ds1: <http://localhost:8890/DAV/home/papou001/rdf_sink/tomato_live.ttl>
-prefix ds2: <http://localhost:8890/DAV/home/papou001/rdf_sink/Israel.ttl>
-prefix ds3: <http://localhost:8890/DAV/home/papou001/rdf_sink/Netherlands.ttl>
-prefix ds4: <http://localhost:8890/DAV/home/papou001/rdf_sink/Spain.ttl>
-prefix ds5: <http://localhost:8890/DAV/home/papou001/rdf_sink/Belgium.ttl>
-prefix ds6: <http://localhost:8890/DAV/home/papou001/rdf_sink/France.ttl>
-prefix ds7: <http://localhost:8890/DAV/home/papou001/rdf_sink/MCPD.ttl>
-prefix ds8: <http://localhost:8890/DAV/home/papou001/rdf_sink/sp_edit.ttl>
 
 select
   distinct (?url as ?Accession)
-from ds1:#
-from ds2:#
-from ds3:#
-from ds4:#
-from ds5:#
-from ds6:#
-from ds7:#
-from ds8:#
 where {
   ?acc a WUR_ont:id .
   ?orPlant WUR_ont:has_id ?acc .
-  ?acc dct:title ?name .
-  bind(concat("<a href=\"", ?acc, "\">", ?name, "</a>") as ?url) .
+  ?acc dcterms:title ?name .
+  bind(concat("<a href=\"", str(?acc), "\">", str(?name), "</a>") as ?url) .
   ?desPlant WUR_ont:descendant_of ?orPlant .
 
   ?obs a om:observation .
   ?obs sio:SIO_000332 ?desPlant .
   ?obs to:has_phenotype_variable ?trait .
   ?trait a ?pVar .
-  ?trait dct:title ?pTitle .
+  ?trait dcterms:title ?pTitle .
   ?trait to:has_phenotype_score ?pVal .
 
   VALUES ?pTitle {"{{phenotypeVariable}}"} .

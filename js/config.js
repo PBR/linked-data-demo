@@ -1,7 +1,8 @@
 // var SPARQL_ENDPOINT = 'http://localhost:8890/sparql?query='
-//var SPARQL_ENDPOINT = 'http://192.168.1.106/ld-relay/makeQuery?'
-var SPARQL_ENDPOINT = 'http://plantbreeding.wur.nl/ld-relay/makeQuery?'
-
+// var SPARQL_ENDPOINT = 'http://192.168.1.106/ld-relay/makeQuery?'
+// var SPARQL_ENDPOINT = 'http://plantbreeding.wur.nl/ld-relay/makeQuery?'
+// var SPARQL_ENDPOINT = 'http://localhost:9999/blazegraph/namespace/ldd-demo/sparql?format=json&query='
+var SPARQL_ENDPOINT = 'http://localhost:5011/makeQuery?'
 
 var TEMPLATE_QUERIES = {
         1 : {
@@ -67,7 +68,8 @@ var TEMPLATE_QUERIES = {
         // breakpoint: readFile('sparqlQueries/getBreakpoints.sparql', 'text'),
         country: readFile('sparqlQueries/getCountries.sparql', 'text'),
         biologicalStatus: readFile('sparqlQueries/getBiologicalStatus.sparql', 'text')
-} */
+}
+*/
 
 var VARIABLE_QUERY_IDs = {
         phenotypeVariable: 'gVar',
