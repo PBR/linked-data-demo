@@ -15,14 +15,14 @@ This project is based on an earlier version of [DTL's linked data demonstrator](
   
 * The Blazegraph GUI should now be live at [`http://localhost:9999`](http://localhost:9999)
 
-* Create a namespace for your project at [`http://localhost:9999/blazegraph/#namespaces`](`http://localhost:9999/blazegraph/#namespaces`). 
+* Create a namespace for your project at [`http://localhost:9999/blazegraph/#namespaces`](http://localhost:9999/blazegraph/#namespaces). 
 
 ![Creating a namespace](images/namespace.png "Creating the namespace")
 For this example, the namespace will be `ldd-demo`. After creating it, make sure to also `Use` the namespace.
 
-* Go to the [Update tab](images/http://localhost:9999/blazegraph/#update) to load your data (triples). You can click on `Browse` to manually select your files in the filesystem, or provide the commands in the interface with the absolute paths for the files (e.g. `load <file:///tmp/blazegraph/data.n3>`), as seen on the screenshot. Make sure that the correct namespace is used.
+* Go to the [Update tab](http://localhost:9999/blazegraph/#update) to load your data (triples). You can click on `Browse` to manually select your files in the filesystem, or provide the commands in the interface with the absolute paths for the files (e.g. `load <file:///tmp/blazegraph/data.n3>`), as seen on the screenshot. Make sure that the correct namespace is used.
 
-![Importing data](data_import.png "Importing the data (ttl files)")
+![Importing data](images/data_import.png "Importing the data (ttl files)")
 
 * Verify that this particular namespace can be queried. You can do this through the `Query tab`.  
 Alternatively, you can submit a request directly.
