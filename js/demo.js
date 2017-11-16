@@ -25,29 +25,18 @@ $(document).ready(function() {
 
 document.getElementById("template").onchange=function(){
 
-    $("#region").addClass('hidden');
-    $("#disease").addClass('hidden');
-    $("#phenotype").addClass('hidden');
     $("#phenotypeVariable").addClass('hidden');
     $("#phenotypeValue").addClass('hidden');
-    $("#sampleType").addClass('hidden');
-    $("#karyotype").addClass('hidden');
+    $("#biologicalStatus").addClass('hidden');
     $("#country").addClass('hidden');
     $("#breakpoint").addClass('hidden');
     $("#errorPanel").addClass('hidden');
     $('#results_table').empty();
     $("#noResultPanel").addClass('hidden');
-    $("#biologicalStatus").addClass('hidden');
 
     var selected = $("#template" ).val();
     console.log(TEMPLATE_QUERIES[selected]);
 
-    if(TEMPLATE_QUERIES[selected].variables.indexOf('region') > -1) {
-        $("#region").removeClass('hidden');
-    }
-    if(TEMPLATE_QUERIES[selected].variables.indexOf('disease') > -1) {
-        $("#disease").removeClass('hidden');
-    }
     if(TEMPLATE_QUERIES[selected].variables.indexOf('phenotype') > -1) {
         $("#phenotype").removeClass('hidden');
     }
@@ -56,10 +45,6 @@ document.getElementById("template").onchange=function(){
     }
     if(TEMPLATE_QUERIES[selected].variables.indexOf('phenotypeValue') > -1) {
         $("#phenotypeValue").removeClass('hidden');
-    }
-    if(TEMPLATE_QUERIES[selected].variables.indexOf('karyotype') > -1) {
-        $("#karyotype").removeClass('hidden');
-
     }
     if(TEMPLATE_QUERIES[selected].variables.indexOf('country') > -1) {
         $("#country").removeClass('hidden');
@@ -70,13 +55,11 @@ document.getElementById("template").onchange=function(){
     if(TEMPLATE_QUERIES[selected].variables.indexOf('breakpoint') > -1) {
         $("#breakpoint").removeClass('hidden');
     }
-    if(TEMPLATE_QUERIES[selected].variables.indexOf('sampleType') > -1) {
-        $("#sampleType").removeClass('hidden');
-    }
+    
+    
     // Fill step2
     TEMPLATE_QUERIES[selected].variables.forEach(function(entry){
 
-        //var service = encodeURI(SPARQL_ENDPOINT + VARIABLE_QUERIES[entry] + '&format=json').replace(/#/g, "%23");
         var service = encodeURI(SPARQL_ENDPOINT + 'qID=' + VARIABLE_QUERY_IDs[entry]);
         
         $.ajax({url: service , dataType: 'jsonp', async: false,
@@ -123,7 +106,6 @@ document.getElementById("process").onclick=function(){
     $("#step3").addClass('hidden');
     $("#noResultPanel").addClass('hidden');
     var selected = $("#template" ).val();
-    //var query = TEMPLATE_QUERIES[selected].query
     var query = TEMPLATE_QUERIES[selected].queryGet
     var isValueMissing = false;
 
