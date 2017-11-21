@@ -57,7 +57,7 @@ def template_to_triples(path):
             'var_obj_uri': row[4].value,
             'var_uri': row[5].value,
             'var_label': row[6].value,
-            'var_score': row[7].value
+            'var_score': str(row[7].value)
         })
     
     
@@ -122,14 +122,13 @@ def template_to_triples(path):
         g.add((URIRef(o['var_obj_uri']), rdf.type, URIRef(o['var_uri'])))
         g.add((URIRef(o['var_obj_uri']), dcterms.title, Literal(o['var_label'])))
     
-    
-    print(g.serialize(format='turtle'))
-    with open('data.ttl', 'w') as outfile:
-        outfile.write(g.serialize(format='turtle'))
-
     # print(experiments)
     # print(plants)
     # print(observations)
+    
+    # print(g.serialize(format='turtle'))
+    g.serialize(destination='data.ttl', format='turtle')
+    print('Done.')
 
 
 if __name__ == '__main__':

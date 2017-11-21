@@ -44,13 +44,16 @@ The demonstrator expects RDF. Feel free to produce your own file, as long as it 
 
 Note that placeholder terms have been used where necessary (prefix `WUR_ont`).
 
-For ease of use, you can fill in the [excel template](http://todo) provided in this project with some of your data, and then run the [accompanying script](http://todo) to convert it into a turtle file.
+For ease of use, you can fill in the [excel template](format_data/data_template.xlsx) provided in this project with some of your data, and then run the [accompanying script](format_data/template_to_triples.py) to convert it into a turtle file.
 
+The conversion script has been tested on Python 2.7 and 3.5, and uses the [rdflib](https://pypi.python.org/pypi/rdflib) and [xlrd](https://pypi.python.org/pypi/xlrd) modules. They can be installed through pip: 
+`pip install xlrd`  
+`pip install rdflib`
 
+Fill in the template, and run the script on the excel file:  
+`python data_template.xlsx`
 
-
-
-
+This will produce a `data.ttl` file with your data formatted according to the demonstrator's semantic model.
 
 
 
