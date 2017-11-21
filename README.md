@@ -20,6 +20,8 @@ This project is based on an earlier version of [DTL's linked data demonstrator](
 ![Creating a namespace](images/namespace.png "Creating the namespace")
 For this example, the namespace will be `ldd-demo`. After creating it, make sure to also `Use` the namespace.
 
+* Adapt your data into the semantic model used by the demonstrator (see [section](#bringing-your-data-to-the-demonstrator-format) below).
+
 * Go to the [Update tab](http://localhost:9999/blazegraph/#update) to load your data (triples). You can click on `Browse` to manually select your files in the filesystem, or provide the commands in the interface with the absolute paths for the files (e.g. `load <file:///tmp/blazegraph/data.n3>`), as seen on the screenshot. Make sure that the correct namespace is used.
 
 ![Importing data](images/data_import.png "Importing the data (ttl files)")
@@ -35,6 +37,14 @@ In this case, the base URL for querying your namespace is `http://localhost:9999
 
 Clone the [linked-data-demo_redirect project](https://github.com/PBR/linked-data-demo_redirect) and follow the instructions there.
 
+
+## Bringing your data to the demonstrator format
+
+The demonstrator expects RDF. Feel free to produce your own file, as long as it adheres to the semantic model as described [here (schema)](https://drive.google.com/open?id=1qc4JK6UPkcqrnceJb24bsM2_JMGKjo7ZjTAcTmz2D4o) and [here (publication)](http://ceur-ws.org/Vol-1933/poster-paper-12.pdf). 
+
+Note that placeholder terms have been used where necessary (prefix `WUR_ont`).
+
+For ease of use, you can fill in the [excel template](http://todo) provided in this project with some of your data, and then run the [accompanying script](http://todo) to convert it into a turtle file.
 
 
 
