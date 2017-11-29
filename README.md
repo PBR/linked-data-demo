@@ -35,7 +35,9 @@ In this case, the base URL for querying your namespace is `http://localhost:9999
 
 ## Set up the redirection layer
 
-Clone the [linked-data-demo_redirect project](https://github.com/PBR/linked-data-demo_redirect) and follow the instructions there.
+Clone the [linked-data-demo_redirect project](https://github.com/PBR/linked-data-demo_redirect) and follow the instructions there.  
+
+Additionally, you will likely have to modify the [`js/config.js` file](js/config.js) in this project, and make it point to the location where the redirection script is running. This is stated in the [SPARQL_ENDPOINT variable](js/config.js#L1).
 
 
 ## Bringing your data to the demonstrator format
