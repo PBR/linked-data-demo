@@ -1,0 +1,40 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix r3d: <http://www.re3data.org/schema/3-0#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix fdp: <http://rdf.biosemantics.org/ontologies/fdp-o#>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix lang: <http://id.loc.gov/vocabulary/iso639-1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<http://www.plantbreeding.wur.nl/FDP> dcterms:title "FAIR Data Point of the Plant Breeding Group, Wageningen UR" ;
+  rdfs:label "FAIR Data Point of the Plant Breeding Group, Wageningen UR" ;
+  r3d:institution <http://www.wur.nl/> ;
+  dcterms:hasVersion "0.1 beta" ;
+  a r3d:Repository ;
+  r3d:repositoryIdentifier <http://www.plantbreeding.wur.nl/FDP#repositoryID> ;
+  dcterms:license <http://rdflicense.appspot.com/rdflicense/cc-by-nc-nd3.0> ;
+  fdp:metadataIssued "2017-11-06T12:11:00.000000+00:00"^^xsd:dateTime ;
+  fdp:metadataModified "2017-11-062:11:00.000000+00:00"^^xsd:dateTime ;
+  r3d:institutionCountry <http://lexvo.org/id/iso3166/NL> ;
+  dcterms:language lang:en ;
+  dcterms:description "FAIR Data Point of the Plant Breeding Group, Wageningen UR" ;
+  fdp:metadataIdentifier <http://www.plantbreeding.wur.nl/FDP#metadataID> ;
+  dcterms:conformsTo <http://rdf.biosemantics.org/FDP/shex/fdpMetadata> ;
+  dcterms:publisher <http://orcid.org/0000-0002-4368-8058> ;
+  r3d:dataCatalog <http://www.plantbreeding.wur.nl/FDP/catalog/pbr.ttl> .
+  
+<http://www.plantbreeding.wur.nl/FDP#metadataID> dcterms:identifier "325c7498-4469-11e7-a919-92ebcb67fe33" ;
+  rdf:type <http://purl.org/spar/datacite/ResourceIdentifier> .
+  
+<http://www.plantbreeding.wur.nl/FDP#repositoryID> dcterms:identifier "49b17ed6-4469-11e7-a919-92ebcb67fe33" ;
+  rdf:type <http://purl.org/spar/datacite/Identifier> .
+
+<http://www.wur.nl/> a foaf:Organization ;
+  foaf:name "Wageningen UR".
+
+<http://orcid.org/0000-0002-4368-8058> rdf:type foaf:Organization ;
+  foaf:name "Richard Finkers".
+    

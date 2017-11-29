@@ -1,0 +1,29 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix dcat: <http://www.w3.org/ns/dcat#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix fdp: <http://rdf.biosemantics.org/ontologies/fdp-o#>.
+@prefix lang: <http://id.loc.gov/vocabulary/iso639-1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.plantbreeding.wur.nl/FDP/dataset/tomato-traits> a dcat:dataset ;
+    rdfs:label "Tomato traits" ;
+    dcterms:title "Tomato traits" ;
+    dcterms:hasVersion "0.1" ;
+    dcterms:language lang:en ;
+    dcat:theme <http://www.wikidata.org/entity/Q14947594> ;
+    fdp:metadataIdentifier <http://www.plantbreeding.wur.nl/FDP/dataset/tomato-traits#metadataID> ;
+    dcterms:modified "2017-11-06T12:13:00.000000+00:00"^^xsd:dateTime ;
+    fdp:metadataIssued "2017-11-06T12:13:00.000000+00:00"^^xsd:dateTime ;
+    fdp:metadataModified "2017-11-06T12:13:00.000000+00:00"^^xsd:dateTime ;
+    dcterms:conformsTo <http://rdf.biosemantics.org/fdp/shex/datasetMetadata> ;
+    dcterms:publisher <http://orcid.org/0000-0001-8209-1900> ;
+    dcterms:isPartOf <http://www.plantbreeding.wur.nl/FDP/catalog/pbr> ;
+    dcat:distribution <http://www.plantbreeding.wur.nl/FDP/distribution/tomato_traits-turtle.ttl> .
+    
+<http://www.plantbreeding.wur.nl/FDP/dataset/tomato-traits#metadataID> dcterms:identifier "49b1832c-4469-11e7-a919-92ebcb67fe33" ;
+    a <http://purl.org/spar/datacite/ResourceIdentifier> .
+    
+<http://orcid.org/0000-0001-8209-1900> foaf:name "Eliana Papoutsoglou" ;
+    a foaf:Person .
