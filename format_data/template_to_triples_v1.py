@@ -132,5 +132,5 @@ def template_to_triples(path):
 
 
 if __name__ == '__main__':
-    path = 'data_template.xlsx'
+    path = 'data_template_v1.xlsx'
     template_to_triples(path)
